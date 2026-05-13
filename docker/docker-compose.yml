@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    networks:
+      - my-overlay
+
+  alpine:
+    image: alpine
+    command: sleep 100000
+    networks:
+      - my-overlay
+
+networks:
+  my-overlay:
+    external: true

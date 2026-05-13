@@ -1,0 +1,19 @@
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Download Consul
+      get_url:
+        url: https://releases.hashicorp.com/consul/1.18.1/consul_1.18.1_linux_amd64.zip
+        dest: /tmp/consul.zip
+
+    - name: Install unzip
+      apt:
+        name: unzip
+        state: present
+
+    - name: Unzip Consul
+      unarchive:
+        src: /tmp/consul.zip
+        dest: /usr/local/bin/
+        remote_src: yes

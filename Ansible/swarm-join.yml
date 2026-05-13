@@ -1,0 +1,6 @@
+- hosts: node_b
+  become: yes
+
+  tasks:
+    - name: Join Docker Swarm
+      shell: docker swarm join --token YOUR_TOKEN NODE_A_PRIVATE_IP:2377

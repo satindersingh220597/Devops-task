@@ -1,0 +1,18 @@
+- hosts: all
+  become: yes
+
+  tasks:
+    - name: Install UFW
+      apt:
+        name: ufw
+        state: present
+
+    - name: Allow SSH
+      ufw:
+        rule: allow
+        port: '22'
+        proto: tcp
+
+    - name: Enable firewall
+      ufw:
+        state: enabled

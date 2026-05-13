@@ -1,0 +1,7 @@
+- hosts: node_a
+  become: yes
+
+  tasks:
+    - name: Create overlay network
+      shell: docker network create --driver overlay my-overlay
+      ignore_errors: yes
